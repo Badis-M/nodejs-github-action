@@ -1,6 +1,6 @@
 // Addition
 function sum(a, b) {
-    return a + b +1 -1;
+    return a + b;
   }
   
   // Soustraction
