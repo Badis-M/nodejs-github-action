@@ -8,15 +8,26 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-v13-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            cypress-cache-v13-${{ runner.os }}-
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: '20'
 
       - name: Install dependencies
         run: npm install
+
+      - name: Install Cypress binary
+        run: npx cypress install  # Assure-toi que le binaire est installé
 
       - name: Run Cypress E2E tests
         run: npx cypress run
