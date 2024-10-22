@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-github-action",
+  "version": "1.0.0",
+  "description": "Github Action training",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Badis-M/nodejs-github-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Badis-M/nodejs-github-action/issues"
+  },
+  "homepage": "https://github.com/Badis-M/nodejs-github-action#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
