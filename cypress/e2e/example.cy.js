@@ -15,16 +15,19 @@ describe('My First E2E Test', () => {
         .should('have.value', 'test@example.com')
     })
       // Nouveau test pour le mot de passe et la touche Entrée
-  it('Enters a password and presses Enter', () => {
-    // Visiter une page avec un champ mot de passe (exemple : un formulaire de connexion)
-    cy.visit('https://example.cypress.io/commands/actions')
-
-    // Cibler le champ mot de passe (tu dois adapter ce sélecteur à ton propre formulaire)
-    cy.get('#password1')
-      .type('MySecretPassword{enter}')  // Entrer le mot de passe et simuler la touche "Entrée"
-      .should('have.value', 'MySecretPassword')  // Vérifier que le mot de passe a bien été saisi
-
-    // Ajouter des assertions supplémentaires pour vérifier le comportement après avoir appuyé sur Entrée
-    // Par exemple, vérifier que l'utilisateur est redirigé ou qu'une validation a eu lieu
-    })
+      it('Enters a password and presses Enter', () => {
+        // Visiter la page
+        cy.visit('https://example.cypress.io/commands/actions')
+      
+        // Cibler le champ de mot de passe avec un alias pour réutiliser l'élément plus tard
+        cy.get('#password1').as('passwordField')
+      
+        // Entrer le mot de passe et simuler la touche "Entrée"
+        cy.get('@passwordField')
+          .type('MySecretPassword{enter}')
+      
+        // Vérifier que l'élément a bien la valeur avant l'envoi du formulaire
+        cy.get('@passwordField')
+          .should('have.value', 'MySecretPassword')
+      })
   })
