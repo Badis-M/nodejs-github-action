@@ -14,20 +14,19 @@ describe('My First E2E Test', () => {
         .type('test@example.com')
         .should('have.value', 'test@example.com')
     })
-      // Nouveau test pour le mot de passe et la touche Entrée
-      it('Enters a password and presses Enter', () => {
+    it('Enters full name and presses Enter', () => {
         // Visiter la page
         cy.visit('https://example.cypress.io/commands/actions')
       
-        // Cibler le champ de mot de passe avec un alias pour réutiliser l'élément plus tard
-        cy.get('#password1').as('passwordField')
+        // Cibler le champ full name avec l'ID correct #fullName1
+        cy.get('#fullName1').as('fullNameField')
       
-        // Entrer le mot de passe et simuler la touche "Entrée"
-        cy.get('@passwordField')
-          .type('MySecretPassword{enter}')
+        // Simuler la saisie de "Badis Merakchi" avec focus et blur explicites
+        cy.get('@fullNameField')
+          .type('Badis Merakchi', { force: true })
       
-        // Vérifier que l'élément a bien la valeur avant l'envoi du formulaire
-        cy.get('@passwordField')
-          .should('have.value', 'MySecretPassword')
+        // Vérifier que le champ contient bien "Badis Merakchi"
+        cy.get('@fullNameField')
+          .should('have.value', 'Badis Merakchi')
       })
   })
