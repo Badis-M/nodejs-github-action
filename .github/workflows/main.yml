@@ -37,9 +37,10 @@ jobs:
 
       - name: Use secret in environment variable
         run: echo "Using the secret"
+             echo "The secret is $MY_SECRET"  # Cela sera masqué dans les logs
         env:
           MY_SECRET: ${{ secrets.API_KEY }}
-
-      - name: Display the secret (Not recommended to show in logs)
+      
+      - name: Display the secret's length
         run: |
-          echo "The secret is $MY_SECRET"
+          echo "The length of the secret is ${#MY_SECRET}"
