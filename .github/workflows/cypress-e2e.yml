@@ -8,4 +8,4 @@ jobs:
     with:
       node_version: '20'
       test_command: 'npx cypress run'
-      use_cypress_cache: 'true'
+      use_cypress_cache: true
