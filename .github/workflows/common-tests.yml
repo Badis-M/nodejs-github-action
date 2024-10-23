@@ -33,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Cache Cypress binary (only if requested)
-        if: ${{ inputs.use_cypress_cache == 'true' }}
+        if: ${{ inputs.use_cypress_cache == true }}
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
