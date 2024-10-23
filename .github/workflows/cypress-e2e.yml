@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    uses: ./.github/workflows/common-tests.yml
+    uses: ./github/workflows/common-tests.yml
     with:
       node_version: '20'
       test_command: 'npx cypress run'
