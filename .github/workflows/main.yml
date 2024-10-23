@@ -36,10 +36,30 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Use secret in environment variable
-        run: echo "Using the secret"
-             echo "The secret is $MY_SECRET"  # Cela sera masqué dans les logs
+        run: |
+          echo "Using the secret"
+          if [ -z "$MY_SECRET" ]; then
+            echo "MY_SECRET is not set"
+          else
+            echo "MY_SECRET is set, length is ${#MY_SECRET}"
+          fi
         env:
           MY_SECRET: ${{ secrets.API_KEY }}
+      
+      - name: Display the secret's length
+        run: |
+          echo "The length of the secret is ${#MY_SECRET}"
+
+      - name: Use secret in environment variable
+        run: |
+          echo "Using the secret"
+          if [ -z "$MY_SECRET" ]; then
+            echo "MY_SECRET is not set"
+          else
+            echo "MY_SECRET is set, length is ${#MY_SECRET}"
+          fi
+        env:
+          MY_SECRET: ${{ secrets.SECRETOS }}
       
       - name: Display the secret's length
         run: |
