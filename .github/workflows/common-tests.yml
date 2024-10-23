@@ -36,7 +36,6 @@ jobs:
             cypress-cache-v13-${{ runner.os }}-
 
       - name: Install Cypress binary (only if requested)
-        if: ${{ inputs.use_cypress_cache == true }}
         run: npx cypress install
 
       - name: Run tests
