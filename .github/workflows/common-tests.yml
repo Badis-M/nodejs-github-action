@@ -6,14 +6,16 @@ on:
       node_version:
         description: 'The version of Node.js to use'
         required: true
+        type: string  # Ajoute le type string
       test_command:
         description: 'The command to run tests'
         required: true
+        type: string  # Ajoute le type string
       use_cypress_cache:
         description: 'Use Cypress cache or not'
         required: false
-        default: 'false'
-
+        default: false
+        type: boolean  # Ajoute le type boolean
 jobs:
   test:
     runs-on: ubuntu-latest
