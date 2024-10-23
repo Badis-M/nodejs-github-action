@@ -1,6 +1,5 @@
 name: Node.js CI
 
-# Exécuter le workflow lors des push ou des pull requests
 on:
   push:
     branches:
@@ -11,56 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14, 16, 18]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Use secret in environment variable
-        run: |
-          echo "Using the secret"
-          if [ -z "$MY_SECRET" ]; then
-            echo "MY_SECRET is not set"
-          else
-            echo "MY_SECRET is set, length is ${#MY_SECRET}"
-          fi
-        env:
-          MY_SECRET: ${{ secrets.API_KEY }}
-      
-      - name: Display the secret's length
-        run: |
-          echo "The length of the secret is ${#MY_SECRET}"
-
-      - name: Use secret in environment variable
-        run: |
-          echo "Using the secret"
-          if [ -z "$MY_SECRET" ]; then
-            echo "MY_SECRET is not set"
-          else
-            echo "MY_SECRET is set, length is ${#MY_SECRET}"
-          fi
-        env:
-          MY_SECRET: ${{ secrets.SECRETOS }}
-      
-      - name: Display the secret's length
-        run: |
-          echo "The length of the secret is ${#MY_SECRET}"
+    uses: owner/repository/.github/workflows/common-tests.yml@main
+    with:
+      node_version: '18'
+      test_command: 'npm test'
