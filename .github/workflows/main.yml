@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    uses: owner/repository/.github/workflows/common-tests.yml@main
+    uses: ./.github/workflows/common-tests.yml
     with:
       node_version: '18'
       test_command: 'npm test'
