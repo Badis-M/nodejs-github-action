@@ -1,21 +1,15 @@
 name: Common Test Workflow
 
 on:
-  workflow_call:
-    inputs:
-      node_version:
-        description: 'The version of Node.js to use'
-        required: true
-        type: string  # Ajoute le type string
-      test_command:
-        description: 'The command to run tests'
-        required: true
-        type: string  # Ajoute le type string
-      use_cypress_cache:
-        description: 'Use Cypress cache or not'
-        required: false
-        default: false
-        type: boolean  # Ajoute le type boolean
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+    
 jobs:
   test:
     runs-on: ubuntu-latest
